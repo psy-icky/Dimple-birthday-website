@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Dimple! 🎉</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ff4d6d;
+            --secondary-color: #ff8fa3;
+            --text-color: #4a4a4a;
+        }
+
+        body {
+            height: 100vh;
+            background: #000;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .love-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            transform-style: preserve-3d;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 77, 109, 0.3);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+
+        .card:hover {
+            transform: rotateY(10deg) rotateX(5deg);
+        }
+
+        .heart-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .message {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .birthday-hat {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            animation: spin 4s linear infinite;
+        }
+
+        .birthday-hat img {
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .special-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-button:hover {
+            transform: scale(1.05);
+            background: var(--secondary-color);
+        }
+
+        .love-story {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background: rgba(255, 77, 109, 0.1);
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .love-story.visible {
+            max-height: 200px;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <div class="love-container">
+        <div class="card">
+            <h1 class="heart-title">🎂 Happy Birthday, Dimple! 🎉</h1>
+            <div class="message">
+                Dear Dimple,<br><br>
+                You bring so much joy and warmth into my life. I hope this special day is as amazing as you are!
+            </div>
+
+            <!-- Spinning Birthday Hat -->
+            <div class="birthday-hat">
+                <img src="birthday_hat.png" alt="Birthday Hat">
+            </div>
+
+            <button class="special-button" id="revealBtn">Open Surprise 🎁</button>
+
+            <div class="love-story" id="loveStory">
+                Here's to an unforgettable birthday filled with love, laughter, and special moments! ❤️
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealBtn = document.getElementById('revealBtn');
+            const loveStory = document.getElementById('loveStory');
+
+            revealBtn.addEventListener('click', () => {
+                loveStory.classList.toggle('visible');
+
+                if (loveStory.classList.contains('visible')) {
+                    revealBtn.textContent = 'Close Surprise 💝';
+                } else {
+                    revealBtn.textContent = 'Open Surprise 🎁';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
